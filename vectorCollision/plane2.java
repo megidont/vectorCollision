@@ -17,7 +17,7 @@ plane2 - a 1d plane in 2d space
 
 */
 
-class plane2{
+public class plane2{
 
 	//A class to define a plane in 2d space. Since it is in 2 dimensions, even though it's a 1 dimensional plane
 	//we call it a plane2 (because it consists of 2d points.)

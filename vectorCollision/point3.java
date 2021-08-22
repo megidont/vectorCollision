@@ -21,7 +21,7 @@ point3 - a point in 3d space or a vector in 3d space
 
 */
 
-class point3{
+public class point3{
 
 	public static point3 ZEROV = new point3(0, 0, 0);
 

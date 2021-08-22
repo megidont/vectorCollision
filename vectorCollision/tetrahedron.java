@@ -14,7 +14,7 @@ tetrahedron - a 3d polygon in 3d space
 
 */
 
-class tetrahedron{
+public class tetrahedron{
 
 	public point3 p1, p2, p3, p4;
 

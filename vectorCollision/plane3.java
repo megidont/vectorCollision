@@ -20,7 +20,7 @@ plane3 - a 2d plane in 3d space
 
 */
 
-class plane3{
+public class plane3{
 
 	point3 p1, p2, p3;
 	float a, b, c, d;

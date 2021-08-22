@@ -13,7 +13,7 @@ triangle - a 2d polygon in 2d space
 
 */
 
-class triangle{
+public class triangle{
 
 	public point2 p1, p2, p3;
 
