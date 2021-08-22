@@ -1,0 +1,7 @@
+./vectorCollision/point2.java
+./vectorCollision/point3.java
+./vectorCollision/triangle.java
+./vectorCollision/tetrahedron.java
+./vectorCollision/plane2.java
+./vectorCollision/plane3.java
+./vectorCollisionTester.java
