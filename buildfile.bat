@@ -1,5 +1,5 @@
 @echo off
-javac -classpath .;./vectorCollision/ "%~1"
+javac -classpath . "%~1"
 IF NOT ERRORLEVEL == 0 (
 
 	ECHO %1 failed to build. Press enter to continue.

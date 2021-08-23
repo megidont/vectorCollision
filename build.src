@@ -1,7 +1,7 @@
-./vectorCollision/point2.java
-./vectorCollision/point3.java
-./vectorCollision/triangle.java
-./vectorCollision/tetrahedron.java
-./vectorCollision/plane2.java
-./vectorCollision/plane3.java
+./us/megidont/avc/point2.java
+./us/megidont/avc/point3.java
+./us/megidont/avc/triangle.java
+./us/megidont/avc/tetrahedron.java
+./us/megidont/avc/plane2.java
+./us/megidont/avc/plane3.java
 ./vectorCollisionTester.java

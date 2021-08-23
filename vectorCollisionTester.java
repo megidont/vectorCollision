@@ -1,3 +1,5 @@
+import us.megidont.avc.*;
+
 public class vectorCollisionTester{
 
 	public static void main(String[] args){
