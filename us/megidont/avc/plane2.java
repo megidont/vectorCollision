@@ -60,6 +60,12 @@ public class plane2{
 
 	}
 
+	public String toString(){
+
+		return "[" + p1.toString() + ", " + p2.toString() + "]";
+
+	}
+
 	public static boolean doesIntersectSegment(point2 vector, plane2 plane){
 
 		//Step 1: check if vector is between the vertices of the plane! (If the vector goes towards the plane)

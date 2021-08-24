@@ -60,6 +60,12 @@ public class plane3{
 
 	}
 
+	public String toString(){
+
+		return "[" + p1.toString() + ", " + p2.toString() + ", " + p3.toString() + "]";
+
+	}
+
 	public static boolean doesIntersectTriangle(point3 vector, plane3 plane){
 
 		//Step 1: check if vector is between the vertices of the plane! (If the vector goes towards the plane)

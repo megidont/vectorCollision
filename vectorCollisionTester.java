@@ -74,6 +74,7 @@ public class vectorCollisionTester{
 			plane3.doesIntersectPlane(v4, p) +"\n\n"
 		);*/
 
+		/*
 		plane2 L = new plane2(new point2(0, 0), new point2(1, 1));
 		System.out.println(
 			"Is the equation of the line between A(" + L.p2 + ") and B(" + L.p1 + ")\n" +
@@ -85,7 +86,7 @@ public class vectorCollisionTester{
 			"Do points " + s.p1 + " and " + s.p2 + " fall on plane " + s.a + " * x + " + s.b +
 			" * y = " + s.c + "? 1. " + plane2.fallsOn(s.p1, s) + ", 2. " +
 			plane2.fallsOn(s.p2, s) + ".\n"
-		);
+		);*/
 
 		/*
 		plane3 p = new plane3(new point3(0, 1, 3), new point3(4, 6, 2), new point3(8, 0, 0));
@@ -119,14 +120,22 @@ public class vectorCollisionTester{
 			"j >< k = " + point3.compare(j, k) + "\n"
 		);*/
 
-		/*
-		point2 p1 = new point2(14,36);
-		plane2 p = new plane2(new point2(1,0), new point2(46, 46));
+
+		point2 p1 = new point2(2,0);
+		plane2 p = new plane2(new point2(1,0), new point2(1, 1));
 		System.out.println(
-			"Does vector p" + p1 + "cross over plane P[\n\t" + p.p1 +
-			"\n\t" + p.p2 + "\n] -- " + p.equation() + "?\n\n\t" +
+			"Does vector p" + p1 + "cross over plane P" + p.toString() +
+			" -- " + p.equation() + "?\n\n\t" +
 			plane2.doesIntersectPlane(p1, p)
-		);*/
+		);
+
+		point3 p2 = new point3(2,0,0);
+		plane3 q = new plane3(new point3(1,0,0), new point3(1, 1,0), point3.ZEROV);
+		System.out.println(
+			"Does vector p" + p2 + "cross over plane Q" + q.toString() +
+			" -- " + q.equation() + "?\n\n\t" +
+			plane3.doesIntersectPlane(p2, q)
+		);
 
 	}
 
