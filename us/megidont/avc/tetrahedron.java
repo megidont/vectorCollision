@@ -32,10 +32,10 @@ public class tetrahedron{
 
 		return new tetrahedron(
 
-			point3.add(this.p1, p2),
-			point3.add(this.p2, p2),
-			point3.add(this.p3, p2),
-			point3.add(this.p4, p2)
+			point3.subtract(this.p1, p2),
+			point3.subtract(this.p2, p2),
+			point3.subtract(this.p3, p2),
+			point3.subtract(this.p4, p2)
 
 		);
 

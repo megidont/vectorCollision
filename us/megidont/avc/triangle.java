@@ -30,9 +30,9 @@ public class triangle{
 
 		return new triangle(
 
-			point2.add(this.p1, p2),
-			point2.add(this.p2, p2),
-			point2.add(this.p3, p2)
+			point2.subtract(this.p1, p2),
+			point2.subtract(this.p2, p2),
+			point2.subtract(this.p3, p2)
 
 		);
 

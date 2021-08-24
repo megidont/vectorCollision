@@ -44,7 +44,7 @@ public class point3{
 
 	public point3 translate(point3 p2){
 
-		return point3.add(this, p2);
+		return point3.subtract(this, p2);
 
 	}
 
@@ -62,7 +62,7 @@ public class point3{
 
 	public static point3 subtract(point3 p1, point3 p2){
 
-		return point3.add(p1, point3.scalarMultiply(p2, -1));
+		return new point3(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);
 
 	}
 

@@ -46,7 +46,7 @@ public class point2{
 
 	/**
 	* Translates the point to use <code>p2</code> as its new origin.
-	* Functionally the same as adding <code>this</code> and <code>p2</code>, but more readable.
+	* Functionally the same as subtracting <code>p2</code> from <code>this</code>, but more readable.
 	*
 	* @param p2		the second point
 	* @return		The translated point
@@ -54,7 +54,7 @@ public class point2{
 	public point2 translate(point2 p2){
 
 
-		return point2.add(this, p2);
+		return point2.subtract(this, p2);
 
 	}
 
@@ -91,7 +91,7 @@ public class point2{
 	*/
 	public static point2 subtract(point2 p1, point2 p2){
 
-		return point2.add(p1, point2.scalarMultiply(p2, -1));
+		return new point2(p1.x - p2.x, p1.y - p2.y);
 
 	}
 
