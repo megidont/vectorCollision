@@ -1,6 +1,6 @@
 package us.megidont.avc;
 /**
-* Point2 is the basic 2 dimensional point class for this package.
+* Point2 is the basic 2 dimensional point class for avc.
 * A <code>point2</code> class is treated as a vector and can be considered as such, with all applicable
 * vector operations implemented.
 *
