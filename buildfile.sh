@@ -6,6 +6,6 @@ else
 
 	echo "$1 failed to build. Press enter to continue.";
 	read pause;
-	exit 0xB0DAC105;
+	exit $((16#B0DAC105));
 
 fi

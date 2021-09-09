@@ -1,7 +1,8 @@
-./us/megidont/avc/point2.java
-./us/megidont/avc/point3.java
-./us/megidont/avc/triangle.java
-./us/megidont/avc/tetrahedron.java
-./us/megidont/avc/plane2.java
-./us/megidont/avc/plane3.java
+./us/megidont/avc/InvalidDataException.java
+./us/megidont/avc/Point2.java
+./us/megidont/avc/Point3.java
+./us/megidont/avc/Triangle.java
+./us/megidont/avc/Tetrahedron.java
+./us/megidont/avc/Plane2.java
+./us/megidont/avc/Plane3.java
 ./vectorCollisionTester.java

@@ -1,32 +1,32 @@
 package us.megidont.avc;
-/*
 
-plane2 - a 1d plane in 2d space
-
-	fields:
-		p1 -- the first point that defines the plane
-		p2 -- the second point that defines the plane
-		a -- the a component of the standard form equation that defines the plane
-		b -- the b component of the standard form equation that defines the plane
-		c -- the c component of the standard form equation that defines the plane
-
-	methods:
-		public plane2 translate(point2 p2) -- returns a plane translated such that p2 is its origin.
-		public string equation() -- returns a human readable string of the equation of the plane.
-		public static boolean doesIntersectSegment(point2 vector, plane2 plane) -- returns whether the given vector in 2d space crosses the segment defining the plane
-		public static boolean fallsOn(point2 point, plane2 plane) -- returns whether or not the point in 2d space is on that plane
-
+/**
+* Plane2 is the basic class for a 1d plane (line) in 2d space.
+* A <code>Plane2</code> consists of 2 <code>Point2</code>s that define the plane. Even though this plane
+* is technically 1 dimensional, this package uses numeric suffixes to specify the dimensionality of points.
+*
+* @author	Megidon't
+* @version	3.0
 */
+public class Plane2{
 
-public class plane2{
+	/**
+	* The 2 points that define the plane.
+	*/
+	public Point2 p1, p2;
 
-	//A class to define a plane in 2d space. Since it is in 2 dimensions, even though it's a 1 dimensional plane
-	//we call it a plane2 (because it consists of 2d points.)
+	/**
+	* The a, b, and c components of the plane's equation in standard form.
+	*/
+	public static float a, b, c;
 
-	public point2 p1, p2;
-	public float a, b, c;
-
-	public plane2(point2 given1, point2 given2){
+	/**
+	* Constructs a <code>Plane2</code> from two <code>Point2</code>s that define the plane.
+	*
+	* @param given1		the first point
+	* @param given2		the second point
+	*/
+	public Plane2(Point2 given1, Point2 given2){
 
 		p1 = given1;
 		p2 = given2;
@@ -43,49 +43,74 @@ public class plane2{
 
 	}
 
-	public plane2 translate(point2 p2){
+	/**
+	* Translates the <code>Plane2</code> to use <code>newOrigin</code> as its new origin.
+	*
+	* @param newOrigin	the new origin for the translated <code>Plane2</code>
+	* @return		the <code>Plane2</code>, translated
+	*/
+	public Plane2 translate(Point2 newOrigin){
 
-		return new plane2(
+		return new Plane2(
 
-			point2.subtract(this.p1, p2),
-			point2.subtract(this.p2, p2)
+			Point2.subtract(this.p1, newOrigin),
+			Point2.subtract(this.p2, newOrigin)
 
 		);
 
 	}
 
+	/**
+	* Creates a human readable string representation of the plane's equation in standard form.
+	*
+	* @return		a string of the equation in standard form
+	*/
 	public String equation(){
 
 		return a + " * x + " + b + " * y = " + c;
 
 	}
 
+	/**
+	* Creates a human readable string representation of the plane as a pair of ordered pairs.
+	*
+	* @return		a string of the plane represented as a pair of ordered pairs
+	*/
 	public String toString(){
 
 		return "[" + p1.toString() + ", " + p2.toString() + "]";
 
 	}
 
-	public static boolean doesIntersectSegment(point2 vector, plane2 plane){
+	/**
+	* Checks whether the vector of a point from the origin crosses over the given <code>Plane2</code>
+	*
+	* @param vector		the <code>Point2</code> representation of the vector from the origin
+	* @param plane		the <code>Plane2</code> to check intersection against
+	* @return		<code>true</code> if the line intersects the segment between the
+	*			<code>Point2</code>s that define <code>plane</code>,
+	*			<code>false</code> otherwise
+	*/
+	public static boolean doesIntersectSegment(Point2 vector, Plane2 plane){
 
 		//Step 1: check if vector is between the vertices of the plane! (If the vector goes towards the plane)
 		if(
-			(point2.crossProductZ(plane.p1, vector) * point2.crossProductZ(plane.p1, plane.p2) <= 0) ||
-			(point2.crossProductZ(plane.p2, vector) * point2.crossProductZ(plane.p2, plane.p1) <= 0)){
+			(Point2.crossProductZ(plane.p1, vector) * Point2.crossProductZ(plane.p1, plane.p2) <= 0) ||
+			(Point2.crossProductZ(plane.p2, vector) * Point2.crossProductZ(plane.p2, plane.p1) <= 0)){
 			return false;
 
 		}
 
 		//Step 2: check if the point is outside of the triangle formed by the plane and the origin
-		point2 temp1, temp2, tempp;
+		Point2 temp1, temp2, tempp;
 
-		temp1 = new point2(0 - plane.p1.x, 0 - plane.p1.y);
-		temp2 = new point2(plane.p2.x - plane.p1.x, plane.p2.y - plane.p1.y);
-		tempp = new point2(vector.x - plane.p1.x, vector.y - plane.p1.y);
+		temp1 = new Point2(0 - plane.p1.x, 0 - plane.p1.y);
+		temp2 = new Point2(plane.p2.x - plane.p1.x, plane.p2.y - plane.p1.y);
+		tempp = new Point2(vector.x - plane.p1.x, vector.y - plane.p1.y);
 
 		if(
-			(point2.crossProductZ(temp1, tempp) * point2.crossProductZ(temp1, temp2) > 0) &&
-			(point2.crossProductZ(temp2, tempp) * point2.crossProductZ(temp2, temp1) > 0)){
+			(Point2.crossProductZ(temp1, tempp) * Point2.crossProductZ(temp1, temp2) > 0) &&
+			(Point2.crossProductZ(temp2, tempp) * Point2.crossProductZ(temp2, temp1) > 0)){
 
 			return false;
 
@@ -95,20 +120,40 @@ public class plane2{
 
 	}
 
-	public static boolean doesIntersectPlane(point2 p1, plane2 p){
+	/**
+	* Checks whether the vector of a point from the origin crosses over the line defined by
+	* the given <code>Plane2</code>.
+	* Used for easy preliminary tests of overlap.
+	*
+	* @param vector		the <code>Point2</code> representation of the vector from the origin
+	* @param plane		the <code>Plane2</code> that defines the line
+	* @return		<code>true</code> if the line intersects line defined by the
+	*			<code>Point2</code>s that define <code>plane</code>,
+	*			<code>false</code> otherwise
+	*/
+	public static boolean doesIntersectPlane(Point2 vector, Plane2 plane){
 
 		/* Legacy code from slope-intercept!
-		float unb = p.b * -1;
-		float testb = ((p.m * p1.x) - p1.y);
-		return (((testb >= 0? testb : -1*testb) >= (unb >= 0? unb : p.b))&& (testb * unb) >= 0);
+		float unb = plane.b * -1;
+		float testb = ((plane.m * vector.x) - vector.y);
+		return (((testb >= 0? testb : -1*testb) >= (unb >= 0? unb : plane.b))&& (testb * unb) >= 0);
 		*/
 
-		float testc = (p.a * p1.x + p.b * p1.y);
-		return(((testc > 0? testc : testc*-1) > (p.c > 0? p.c : p.c*-1)) && ((testc * p.c) >= 0));
+		float testc = (plane.a * vector.x + plane.b * vector.y);
+		return(((testc > 0? testc : testc*-1) > (plane.c > 0? plane.c : plane.c*-1)) && ((testc * plane.c) >= 0));
 
 	}
 
-	public static boolean fallsOn(point2 point, plane2 plane){
+	/**
+	* Checks if the given <code>Point2</code> falls on the line defined by the <code>Plane2</code>.
+	*
+	* @param point		the <code>Point2</code> to check
+	* @param plane		the <code>Plane2</code> that defines the line
+	* @return		<code>true</code> if the <code>Point2</code> falls on the line defined by the
+	*			<code>Point2</code>s that define <code>plane</code>,
+	*			<code>false</code> otherwise
+	*/
+	public static boolean fallsOn(Point2 point, Plane2 plane){
 
 		return (plane.c == (plane.a * point.x) + (plane.b * point.y));
 

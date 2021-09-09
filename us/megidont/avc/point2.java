@@ -1,31 +1,31 @@
 package us.megidont.avc;
 /**
 * Point2 is the basic 2 dimensional point class for avc.
-* A <code>point2</code> class is treated as a vector and can be considered as such, with all applicable
+* A <code>Point2</code> class is treated as a vector and can be considered as such, with all applicable
 * vector operations implemented.
 *
 * @author 	Megidon't
 * @version 	3.0
 */
-public class point2{
+public class Point2{
 
 	/**
 	* Stores the zero vector.
 	*/
-	public static point2 ZEROV = new point2(0, 0);
+	public static Point2 ZEROV = new Point2(0, 0);
 
 	/**
-	* The x/y coordinates of the <code>point2</code>.
+	* The x/y coordinates of the <code>Point2</code>.
 	*/
 	public float x, y;
 
 	/**
-	* Constructs a <code>point2</code> from x and y coordinates.
+	* Constructs a <code>Point2</code> from x and y coordinates.
 	*
 	* @param givenX		the x coordinate
 	* @param givenY		the y coordinate
 	*/
-	public point2(float givenX, float givenY){
+	public Point2(float givenX, float givenY){
 
 		x = givenX;
 		y = givenY;
@@ -38,7 +38,7 @@ public class point2{
 	* @param p2		the second point
 	* @return		<code>true</code> if the points are equal, <code>false</code> otherwise
 	*/
-	public boolean isEqualTo(point2 p2){
+	public boolean isEqualTo(Point2 p2){
 
 		return (x == p2.x) && (y == p2.y);
 
@@ -51,10 +51,10 @@ public class point2{
 	* @param p2		the second point
 	* @return		The translated point
 	*/
-	public point2 translate(point2 p2){
+	public Point2 translate(Point2 p2){
 
 
-		return point2.subtract(this, p2);
+		return Point2.subtract(this, p2);
 
 	}
 
@@ -76,9 +76,9 @@ public class point2{
 	* @param p2		the second point
 	* @return		the sum of the two points
 	*/
-	public static point2 add(point2 p1, point2 p2){
+	public static Point2 add(Point2 p1, Point2 p2){
 
-		return new point2(p1.x + p2.x, p1.y + p2.y);
+		return new Point2(p1.x + p2.x, p1.y + p2.y);
 
 	}
 
@@ -89,9 +89,9 @@ public class point2{
 	* @param p2		the second point
 	* @return		the difference between two points
 	*/
-	public static point2 subtract(point2 p1, point2 p2){
+	public static Point2 subtract(Point2 p1, Point2 p2){
 
-		return new point2(p1.x - p2.x, p1.y - p2.y);
+		return new Point2(p1.x - p2.x, p1.y - p2.y);
 
 	}
 
@@ -102,9 +102,9 @@ public class point2{
 	* @param s		the scalar to multiply the vector by
 	* @return		the scaled vector
 	*/
-	public static point2 scalarMultiply(point2 p1, float s){
+	public static Point2 scalarMultiply(Point2 p1, float s){
 
-		return new point2(p1.x * s, p1.y * s);
+		return new Point2(p1.x * s, p1.y * s);
 
 	}
 
@@ -115,7 +115,7 @@ public class point2{
 	* @param p2		the second vector to multiply
 	* @return		the scalar dot product
 	*/
-	public static float dotProduct(point2 p1, point2 p2){
+	public static float dotProduct(Point2 p1, Point2 p2){
 
 		return (p1.x * p2.x) + (p1.y * p2.y);
 
@@ -129,7 +129,7 @@ public class point2{
 	* @param vector2	the postmultiplicand
 	* @return		the Z component of the resultant vector
 	*/
-	public static float crossProductZ(point2 vector1, point2 vector2){
+	public static float crossProductZ(Point2 vector1, Point2 vector2){
 
 		return((vector1.y * vector2.x) - (vector1.x * vector2.y));
 
@@ -144,7 +144,7 @@ public class point2{
 	* 			<code>p1</code> > <code>p2</code>, or <code>2</code> if
 	*			<code>p2</code> > <code>p1</code>
 	*/
-	public static int compare(point2 p1, point2 p2){
+	public static int compare(Point2 p1, Point2 p2){
 
 		//belive it or not this actually works
 		//if a > x, a*a > x*x in all cases, therefore we don't need to waste a few cycles to multiply.
