@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 if javac -classpath . "$1"; then
 
 	echo "$1 built successfully.";

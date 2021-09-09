@@ -141,7 +141,7 @@ public class vectorCollisionTester{
 		);
 		*/
 
-		/**/
+		/* */
 		Point2 p;
 		Triangle t;
 		Random rng = new Random();
@@ -162,19 +162,24 @@ public class vectorCollisionTester{
 			}
 
 			boolean oldWay, newWay, error;
-			Instant startOld, endOld;
-			Instant startNew, endNew;
-			Duration oldTime, newTime;
+			long startOld, endOld;
+			long startNew, endNew;
+			long startBase, endBase;
+			long oldTime, newTime, baseTime;
 
-			startOld = java.time.Instant.now();
+			startOld = System.nanoTime();
 			oldWay = Triangle.isInsideOld(p, t);
-			endOld = java.time.Instant.now();
-			oldTime = java.time.Duration.between(startOld, endOld);
+			endOld = System.nanoTime();
+			oldTime = endOld - startOld;
 
-			startNew = java.time.Instant.now();
+			startNew = System.nanoTime();
 			newWay = Triangle.isInside(p, t);
-			endNew = java.time.Instant.now();
-			newTime = java.time.Duration.between(startNew, endNew);
+			endNew = System.nanoTime();
+			newTime = endNew - startNew;
+
+			startBase = System.nanoTime();
+			endBase = System.nanoTime();
+			baseTime = endBase - startBase;
 
 			error = !(newWay == oldWay);
 			String tabStorage = t.toString().length() > 39? "\t" : "\t\t";
@@ -186,11 +191,13 @@ public class vectorCollisionTester{
 				oldWay + " new: " + newWay +
 				(error ? " FAIL!!!!!!!!!!!!!!" : " pass" + (newWay? "!" : ""))
 			);
-			System.out.println("\n\t\t\t\t\t\t" + oldTime + " -> " + newTime + "\n");
+			System.out.println(
+				"\n\t\t\t\t\t\t" + oldTime + " -> " + newTime + " : " + baseTime + "\n"
+			);
 
 
 		}while(--i > 0xB0DAC105);
-	/**/
+	/* */
 
 	/*
 		Point3 p;
@@ -217,19 +224,24 @@ public class vectorCollisionTester{
 			}
 
 			boolean oldWay, newWay, error;
-			Instant startOld, endOld;
-			Instant startNew, endNew;
-			Duration oldTime, newTime;
+			long startOld, endOld;
+			long startNew, endNew;
+			long startBase, endBase;
+			long oldTime, newTime, baseTime;
 
-			startOld = java.time.Instant.now();
+			startOld = System.nanoTime();
 			oldWay = Tetrahedron.isInsideOld(p, t);
-			endOld = java.time.Instant.now();
-			oldTime = java.time.Duration.between(startOld, endOld);
+			endOld = System.nanoTime();
+			oldTime = endOld - startOld;
 
-			startNew = java.time.Instant.now();
+			startNew = System.nanoTime();
 			newWay = Tetrahedron.isInside(p, t);
-			endNew = java.time.Instant.now();
-			newTime = java.time.Duration.between(startNew, endNew);
+			endNew = System.nanoTime();
+			newTime = endNew - startNew;
+
+			startBase = System.nanoTime();
+			endBase = System.nanoTime();
+			baseTime = endBase - startBase;
 
 			error = !(newWay == oldWay);
 			String tabStorage1 = p.toString().length() > 15? "\t" : "\t\t";
@@ -242,7 +254,9 @@ public class vectorCollisionTester{
 				oldWay + " new: " + newWay +
 				(error ? " FAIL!!!!!!!!!!!!!!" : " pass" + (newWay? "!" : ""))
 			);
-			System.out.println("\n\t\t\t\t\t\t" + oldTime + " -> " + newTime + "\n");
+			System.out.println(
+				"\n\t\t\t\t\t\t" + oldTime + " -> " + newTime + " : " + baseTime + "\n"
+			);
 
 		}while(--i > 0xB0DAC105);
 	*/

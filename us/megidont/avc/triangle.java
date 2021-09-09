@@ -17,6 +17,8 @@ public class Triangle{
 
 	/**
 	* Constructs a <code>Triangle</code> from three <code>Point2</code>s.
+	* This can throw an <code>InvalidDataException</code> at runtime, so if you are automatically
+	* generating <code>Triangle</code>s you may want to give them a quick once-over.
 	*
 	* @param given1		the first point
 	* @param given2		the second point

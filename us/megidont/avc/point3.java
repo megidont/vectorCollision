@@ -124,11 +124,12 @@ public class Point3{
 	}
 
 	/**
-	* Multiplies a 3d vector by another 3d vector in 4d space assuming they have no w component
+	* Multiplies a 3d vector by another two 3d vector in 4d space assuming they have no w component
 	* and returns the W component of the result.
 	*
 	* @param vector1	the premultiplicand
 	* @param vector2	the postmultiplicand
+	* @param vector3	the ...postpostmultiplicand
 	* @return		the W component of the resultant vector
 	*/
 	public static float crossProductW(Point3 vector1, Point3 vector2, Point3 vector3){

@@ -88,7 +88,7 @@ public class Plane2{
 	* @param vector		the <code>Point2</code> representation of the vector from the origin
 	* @param plane		the <code>Plane2</code> to check intersection against
 	* @return		<code>true</code> if the line intersects the segment between the
-	*			<code>Point2</code>s that define <code>plane</code>,
+	*			<code>Point2</code>s that define <code>Plane2</code>,
 	*			<code>false</code> otherwise
 	*/
 	public static boolean doesIntersectSegment(Point2 vector, Plane2 plane){
@@ -128,7 +128,7 @@ public class Plane2{
 	* @param vector		the <code>Point2</code> representation of the vector from the origin
 	* @param plane		the <code>Plane2</code> that defines the line
 	* @return		<code>true</code> if the line intersects line defined by the
-	*			<code>Point2</code>s that define <code>plane</code>,
+	*			<code>Point2</code>s that define <code>Plane2</code>,
 	*			<code>false</code> otherwise
 	*/
 	public static boolean doesIntersectPlane(Point2 vector, Plane2 plane){
@@ -150,7 +150,7 @@ public class Plane2{
 	* @param point		the <code>Point2</code> to check
 	* @param plane		the <code>Plane2</code> that defines the line
 	* @return		<code>true</code> if the <code>Point2</code> falls on the line defined by the
-	*			<code>Point2</code>s that define <code>plane</code>,
+	*			<code>Point2</code>s that define <code>Plane2</code>,
 	*			<code>false</code> otherwise
 	*/
 	public static boolean fallsOn(Point2 point, Plane2 plane){

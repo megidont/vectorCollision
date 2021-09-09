@@ -1,31 +1,32 @@
 package us.megidont.avc;
-/*
 
-Plane3 - a 2d plane in 3d space
-
-	fields:
-		p1 -- the first point that defines the plane
-		p2 -- the second point that defines the plane
-		p3 -- the third point that defines the plane
-		a -- the a-component of the planar equation
-		b -- the b-component of the planar equation
-		c -- the c-component of the planar equation
-		d -- the d-component of the planar equation
-
-	methods:
-		public Plane3 translate(Point3 p2) -- returns a plane translated such that p2 is its origin.
-		public string equation() -- returns a human readable string of the equation of the plane.
-		public static boolean doesIntersectTriangle(Point3 vector, Plane3 plane) -- returns whether the given vector in 3d space crosses the triangle defining the plane.
-		public static boolean doesIntersectPlane(Point3 p1, Plane3 p) -- returns whether the given vector in 3d space crosses the plane.
-		public static boolean fallsOn(Point3 point, Plane3 plane) -- returns whether or not the point in 3d space is on that plane.
-
+/**
+* Plane3 is the basic class for a 2d plane in 3d space.
+* A <code>Plane3</code> consists of 3 <code>Point3</code>s that define the plane. Even though this plane
+* is technically 2 dimensional, this package uses numeric suffixes to specify the dimensionality of points.
+*
+* @author	Megidon't
+* @version	3.0
 */
-
 public class Plane3{
 
+	/**
+	* The 3 points that define the plane.
+	*/
 	public Point3 p1, p2, p3;
+
+	/**
+	* The a, b, c, and d components of the plane's equation in standard form.
+	*/
 	public float a, b, c, d;
 
+	/**
+	* Constructs a <code>Plane3</code> from three <code>Point3</code>s that define the plane.
+	*
+	* @param given1		the first point
+	* @param given2		the second point
+	* @param given3		the third point
+	*/
 	public Plane3(Point3 given1, Point3 given2, Point3 given3){
 
 		p1 = given1;
@@ -42,30 +43,55 @@ public class Plane3{
 
 	}
 
-	public Plane3 translate(Point3 p2){
+	/**
+	* Translates the <code>Plane3</code> to use <code>newOrigin</code> as its new origin.
+	*
+	* @param newOrigin	the new origin for the translated <code>Plane3</code>
+	* @return		the <code>Plane3</code>, translated
+	*/
+	public Plane3 translate(Point3 newOrigin){
 
 		return new Plane3(
 
-			Point3.subtract(this.p1, p2),
-			Point3.subtract(this.p2, p2),
-			Point3.subtract(this.p3, p2)
+			Point3.subtract(this.p1, newOrigin),
+			Point3.subtract(this.p2, newOrigin),
+			Point3.subtract(this.p3, newOrigin)
 
 		);
 
 	}
 
+	/**
+	* Creates a human readable string representation of the plane's equation in standard form.
+	*
+	* @return		a string of the equation in standard form
+	*/
 	public String equation(){
 
 		return a + "*x + " + b + "*y + " + c + "*z = " + d;
 
 	}
 
+	/**
+	* Creates a human readable string representation of the plane as a trio of ordered triples.
+	*
+	* @return		a string of the plane represented as a trio of ordered triples
+	*/
 	public String toString(){
 
 		return "[" + p1.toString() + ", " + p2.toString() + ", " + p3.toString() + "]";
 
 	}
 
+	/**
+	* Checks whether the vector of a point from the origin crosses over the given <code>Plane3</code>
+	*
+	* @param vector		the <code>Point3</code> representation of the vector from the origin
+	* @param plane		the <code>Plane3</code> to check intersection against
+	* @return		<code>true</code> if the line intersects the triangle between the
+	*			<code>Point3</code>s that define the <code>Plane3</code>,
+	*			<code>false</code> otherwise
+	*/
 	public static boolean doesIntersectTriangle(Point3 vector, Plane3 plane){
 
 		//Step 1: check if vector is between the vertices of the plane! (If the vector goes towards the plane)
@@ -99,13 +125,33 @@ public class Plane3{
 
 	}
 
-	public static boolean doesIntersectPlane(Point3 p1, Plane3 p){
+	/**
+	* Checks whether the vector of a point from the origin crosses over the plane defined by
+	* the given <code>Plane3</code>.
+	* Used for easy preliminary tests of overlap.
+	*
+	* @param vector		the <code>Point3</code> representation of the vector from the origin
+	* @param plane		the <code>Plane3</code> that defines the line
+	* @return		<code>true</code> if the line intersects line defined by the
+	*			<code>Point3</code>s that define <code>Plane3</code>,
+	*			<code>false</code> otherwise
+	*/
+	public static boolean doesIntersectPlane(Point3 vector, Plane3 plane){
 
-		float testd = (p.a * p1.x + p.b * p1.y + p.c * p1.z);
-		return (((testd > 0? testd : testd*-1) >= (p.d > 0? p.d : p.d*-1)) && ((testd * p.d) >= 0));
+		float testd = (plane.a * vector.x + plane.b * vector.y + plane.c * vector.z);
+		return (((testd > 0? testd : testd*-1) >= (plane.d > 0? plane.d : plane.d*-1)) && ((testd * plane.d) >= 0));
 
 	}
 
+	/**
+	* Checks if the given <code>Point3</code> falls on the line defined by the <code>Plane3</code>.
+	*
+	* @param point		the <code>Point3</code> to check
+	* @param plane		the <code>Plane3</code> that defines the line
+	* @return		<code>true</code> if the <code>Point3</code> falls on the plane defined by the
+	*			<code>Point3</code>s that define <code>Plane3</code>,
+	*			<code>false</code> otherwise
+	*/
 	public static boolean fallsOn(Point3 point, Plane3 plane){
 
 		return (((plane.a * point.x) + (plane.b * point.y) + (plane.c * point.z)) == plane.d);
